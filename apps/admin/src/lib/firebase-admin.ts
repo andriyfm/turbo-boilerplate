@@ -1,11 +1,10 @@
-import { FIREBASE_CONFIG } from 'configs/app.config'
-import admin, { ServiceAccount } from 'firebase-admin'
-import serviceAccount from './firebase-service-account.json'
+import { FIREBASE_CONFIG, SERVICE_ACCOUNT } from 'configs/app.config'
+import admin from 'firebase-admin'
 
 if (!admin.apps.length) {
   try {
     admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount as ServiceAccount),
+      credential: admin.credential.cert(SERVICE_ACCOUNT),
       databaseURL: FIREBASE_CONFIG.databaseURL,
       storageBucket: FIREBASE_CONFIG.storageBucket,
     })
